@@ -1,13 +1,15 @@
 package com.ecommerce.microcommerce.dao;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.ecommerce.microcommerce.model.Product;
 
 import java.util.List;
 
-public interface ProductDAO {
+@Repository
+public interface ProductDAO extends JpaRepository<Product, Integer> {
 
-    List<Product> findAll();
     Product findById(int id);
-    Product save(Product product);
+
+    List<Product> findByPriceGreaterThan(int priceLimit);
 }

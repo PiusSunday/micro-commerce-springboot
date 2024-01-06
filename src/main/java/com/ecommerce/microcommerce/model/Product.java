@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 
 // @JsonIgnoreProperties(value = {"purchasePrice", "id"}) // Static Filtering
 // @JsonFilter("myDynamicFilter") // Dynamic Filter
@@ -13,7 +15,10 @@ public class Product {
 
     @Id
     private int id;
+
+    @Size(min = 3, max = 25)
     private String name;
+    @Min(value = 1)
     private int price;
 
     // Information that we do not wish to expose
